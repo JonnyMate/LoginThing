@@ -3,6 +3,22 @@ body,
 div {
   padding: 0;
   margin: 0;
+  font-family: "Quicksand", sans-serif;
+}
+
+input {
+  padding: 10px;
+  margin: 10px;
+  width: 50%;
+}
+
+button {
+  font-size: 15px;
+  color: #fff;
+  background-color: #3f3d56;
+  width: 100px;
+  padding: 10px;
+  border: none;
 }
 
 .container {
@@ -13,3 +29,42 @@ div {
   height: 18%;
   width: 18%;
 }
+
+.input-container {
+  width: 30%;
+  padding: 10px;
+  margin: 10px auto 0px auto;
+  background-color: #6c63ff;
+}
+
+.title {
+  width: 200px;
+  padding: 10px;
+  margin: auto;
+  border-bottom: 1px solid #000;
+}
+
+.credentials {
+  margin: 10px;
+}
+
+.submit-button {
+  margin-bottom: 10px;
+}
+
+.input-switch {
+  color: #fff;
+  width: 30%;
+  padding: 10px;
+  margin: 0px auto;
+  background-color: #3f3d56;
+}
+
+.input-switch > p:hover {
+  cursor: pointer;
+}
+
+/* @media only screen and (max-width: 600px) {
+  body {
+  }
+} */
