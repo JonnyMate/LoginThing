@@ -8,7 +8,10 @@ const LoginComponentChange = props => {
           ? "Don't have an account?"
           : "Already have an account?"}
       </p>
-      <p style={{ textDecoration: "underline" }} onClick={props.handleChange}>
+      <p
+        style={{ textDecoration: "underline", cursor: "pointer" }}
+        onClick={props.handleChange}
+      >
         {props.data.showingLoginPage ? "Register" : "Login"}
       </p>
     </div>

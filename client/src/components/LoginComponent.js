@@ -14,6 +14,9 @@ const LoginComponent = props => {
       <div className="credentials">
         <input name="username" placeholder="Username" />
         <input name="password" placeholder="Password" />
+        {props.data.showingLoginPage ? null : (
+          <input name="confirmPassword" placeholder="Re-type password" />
+        )}
       </div>
 
       <div className="submit-button">
