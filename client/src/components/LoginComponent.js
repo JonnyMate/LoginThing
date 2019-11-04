@@ -17,7 +17,7 @@ const LoginComponent = props => {
       </div>
 
       <div className="submit-button">
-        <button>Login</button>
+        <button>{props.data.showingLoginPage ? "Login" : "Sign Up"}</button>
       </div>
     </div>
   );
