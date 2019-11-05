@@ -14,6 +14,7 @@ const LoginComponent = props => {
       <div className="credentials">
         <input name="username" placeholder="Username" />
         <input name="password" placeholder="Password" />
+        {/* Checks state; shows re-enter password field if false */}
         {props.data.showingLoginPage ? null : (
           <input name="confirmPassword" placeholder="Re-type password" />
         )}
