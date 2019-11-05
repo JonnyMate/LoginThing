@@ -21,6 +21,10 @@ button {
   border: none;
 }
 
+a {
+  color: #fff;
+}
+
 .container {
   text-align: center;
 }

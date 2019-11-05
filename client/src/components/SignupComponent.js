@@ -1,24 +1,25 @@
 import React from "react";
 
-const LoginComponent = () => {
+const SignupComponent = () => {
   return (
     <div className="input-container">
       <div>
-        {/* Login / Register */}
-        <h1 className="title">Login</h1>
+        {/* Register */}
+        <h1 className="title">Register</h1>
       </div>
 
       {/* Input boxes for user details */}
       <div className="credentials">
         <input name="username" placeholder="Username" />
         <input name="password" placeholder="Password" />
+        <input name="re-password" placeholder="Re-type password" />
       </div>
 
       <div className="submit-button">
-        <button>Login</button>
+        <button>Signup</button>
       </div>
     </div>
   );
 };
 
-export default LoginComponent;
+export default SignupComponent;

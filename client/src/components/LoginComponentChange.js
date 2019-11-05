@@ -1,19 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const LoginComponentChange = props => {
+const LoginComponentChange = () => {
   return (
     <div className="input-switch">
-      <p>
-        {props.data.showingLoginPage
-          ? "Don't have an account?"
-          : "Already have an account?"}
-      </p>
-      <p
-        style={{ textDecoration: "underline", cursor: "pointer" }}
-        onClick={props.handleChange}
-      >
-        {props.data.showingLoginPage ? "Register" : "Login"}
-      </p>
+      <p>Don't have an account?</p>
+      <Link to="/signup">
+        <p style={{ textDecoration: "underline", cursor: "pointer" }}>
+          Register
+        </p>
+      </Link>
     </div>
   );
 };
