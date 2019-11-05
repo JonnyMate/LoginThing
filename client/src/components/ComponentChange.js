@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const LoginComponentChange = () => {
+const ComponentChange = props => {
   return (
     <div className="input-switch">
       <p>Don't have an account?</p>
-      <Link to="/signup">
+      <Link to={props.data ? "/signup" : "/login"}>
         <p style={{ textDecoration: "underline", cursor: "pointer" }}>
           Register
         </p>
@@ -14,4 +14,4 @@ const LoginComponentChange = () => {
   );
 };
 
-export default LoginComponentChange;
+export default ComponentChange;

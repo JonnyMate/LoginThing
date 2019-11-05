@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import LoginComponent from "./LoginComponent";
-import LoginComponentChange from "./LoginComponentChange";
+import ComponentChange from "./ComponentChange";
 
 class Login extends Component {
+  state = {
+    showingLogin: true
+  };
+
   render() {
     return (
       <div>
@@ -10,7 +14,7 @@ class Login extends Component {
         <LoginComponent />
 
         {/* Swap from login to register */}
-        <LoginComponentChange />
+        <ComponentChange data={this.state.showingLogin} />
       </div>
     );
   }
