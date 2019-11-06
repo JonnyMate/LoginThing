@@ -5,9 +5,11 @@ const db = require("./config/keys").mongoURI;
 
 const app = express();
 
+// Middleware
 app.use(bodyParser.json());
-app.use("api/users", require("./routes/api/users"));
+app.use("/api/users", require("./routes/api/users"));
 
+// MongoDB
 mongoose
   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(console.log("Connected to database"))
