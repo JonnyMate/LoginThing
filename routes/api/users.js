@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcrypt");
 
 const User = require("../../models/User");
 
@@ -12,18 +13,26 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
-  const newUser = new User({
-    username: req.body.username,
-    password: req.body.password
-  });
+router.post("/", (req, res) => {
+  // No. of saltrounds
+  const saltRounds = 10;
 
-  try {
-    const savedUser = await newUser.save();
-    res.status(201).json(savedUser);
-  } catch (err) {
-    res.send(`Failed to create user - ${user}`);
-  }
+  // Hash password
+  bcrypt.hash(req.body.password, saltRounds, async (err, hash) => {
+    // Create new user
+    const newUser = new User({
+      username: req.body.username,
+      password: hash
+    });
+
+    // Save new user to DB
+    try {
+      const savedUser = await newUser.save();
+      res.status(201).json(savedUser);
+    } catch (err) {
+      res.send(`Failed to create user - ${user}`);
+    }
+  });
 });
 
 module.exports = router;
