@@ -10,9 +10,13 @@ const SignupComponent = () => {
 
       {/* Input boxes for user details */}
       <div className="credentials">
-        <input name="username" placeholder="Username" />
-        <input name="password" placeholder="Password" />
-        <input name="re-password" placeholder="Re-type password" />
+        <input type="text" name="username" placeholder="Username" />
+        <input type="password" name="password" placeholder="Password" />
+        <input
+          type="password"
+          name="re-password"
+          placeholder="Re-type password"
+        />
       </div>
 
       <div className="submit-button">

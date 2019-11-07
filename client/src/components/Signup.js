@@ -13,7 +13,7 @@ class Signup extends Component {
         {/* Login input fields */}
         <SignupComponent />
 
-        {/* Swap from login to register */}
+        {/* Swap from register to login */}
         <ComponentChange data={this.state.showingLogin} />
       </div>
     );
