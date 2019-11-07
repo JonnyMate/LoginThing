@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 const User = require("../../models/User");
 
@@ -13,12 +13,9 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/", (req, res) => {
-  // No. of saltrounds
-  const saltRounds = 10;
-
+router.post("/signup", (req, res) => {
   // Hash password
-  bcrypt.hash(req.body.password, saltRounds, async (err, hash) => {
+  bcrypt.hash(req.body.password, 10, async (err, hash) => {
     // Create new user
     const newUser = new User({
       username: req.body.username,
@@ -28,10 +25,23 @@ router.post("/", (req, res) => {
     // Save new user to DB
     try {
       const savedUser = await newUser.save();
-      res.status(201).json(savedUser);
+      res.status(201).send({ success: true });
     } catch (err) {
-      res.send(`Failed to create user - ${user}`);
+      res.send(`Failed to create user - ${err}`);
     }
+  });
+});
+
+router.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+
+  const userCheck = await User.find({ username: username });
+  if (userCheck.length === 0) {
+    res.status(400).send({ success: false });
+    return;
+  }
+  bcrypt.compare(password, userCheck[0].password, (err, correct) => {
+    res.status(200).send({ success: correct });
   });
 });
 

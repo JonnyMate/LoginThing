@@ -1,27 +1,30 @@
 import React, { Component } from "react";
-const bcrypt = require("bcryptjs");
 
 class LoginComponent extends Component {
   state = {
     username: "",
-    password: ""
+    password: "",
+    detailsIncorrect: false
   };
 
   // Handles login details
-  handleLogin = async () => {
+  handleLogin = () => {
     // Fetch from DB
-    fetch("/api/users")
+    fetch("/api/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        password: this.state.password
+      })
+    })
       .then(res => res.json())
-      .then(users => {
-        // Loops through users in DB and compares input password with stored hashed password
-        for (let i = 0; i < users.length; i++) {
-          bcrypt.compare(this.state.password, users[i].password, (err, res) => {
-            // Signs user in if username and password match DB
-            if (users[i].username === this.state.username && res) {
-              window.location.href = "/signedin";
-            }
-          });
-        }
+      .then(data => {
+        data.success
+          ? (window.location.href = "/signedin")
+          : this.setState({ detailsIncorrect: true });
       })
       .catch(err => console.log(err));
   };
