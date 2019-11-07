@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Signedin from "./components/Signedin";
+import Signedup from "./components/Signedup";
 import "./App.css";
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/signedin" component={Signedin} />
+        <Route path="/signedup" component={Signedup} />
       </div>
     </Router>
   );
