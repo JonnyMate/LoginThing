@@ -52,6 +52,13 @@ class SignupComponent extends Component {
           <h1 className="title">Register</h1>
         </div>
 
+        {/* If details are incorrect */}
+        {this.state.detailsIncorrect && (
+          <div className="incorrect">
+            <p>Username is taken</p>
+          </div>
+        )}
+
         {/* Input boxes for user details */}
         <div className="credentials">
           <input

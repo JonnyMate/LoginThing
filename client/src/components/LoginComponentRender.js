@@ -3,27 +3,7 @@ import React, { Component } from "react";
 class LoginComponentRender extends Component {
   constructor(props) {
     super();
-    this.state = {
-      username: "",
-      password: "",
-      detailsIncorrect: false
-    };
   }
-
-  onChangeUsername = () => {
-    this.props.ChangeStateUsername(this.state.username);
-  };
-
-  // Takes values of input fields and puts them in state
-  handleChange = event => {
-    const { name, value } = event.target;
-
-    this.setState({
-      [name]: value
-    });
-
-    this.onChangeUsername();
-  };
 
   render() {
     return (
@@ -34,7 +14,7 @@ class LoginComponentRender extends Component {
         </div>
 
         {/* If details are incorrect */}
-        {this.state.detailsIncorrect && (
+        {this.props.detailsIncorrect && (
           <div className="incorrect">
             <p>Incorrect username or password</p>
           </div>
@@ -46,19 +26,19 @@ class LoginComponentRender extends Component {
             type="text"
             name="username"
             placeholder="Username"
-            onChange={this.handleChange}
+            onChange={this.props.handleChange}
           />
           <input
             type="password"
             name="password"
             placeholder="Password"
-            onChange={this.handleChange}
+            onChange={this.props.handleChange}
           />
         </div>
 
         {/* Submit */}
         <div className="submit-button">
-          <button onClick={this.handleLogin}>Login</button>
+          <button onClick={this.props.handleLogin}>Login</button>
         </div>
       </div>
     );

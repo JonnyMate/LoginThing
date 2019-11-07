@@ -14,6 +14,11 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/signup", (req, res) => {
+  // // Check if input username already exists
+  // if (User.find({ username: req.body.username })) {
+  //   res.status(400).send({ success: false });
+  //   return;
+  // }
   // Hash password
   bcrypt.hash(req.body.password, 10, async (err, hash) => {
     // Create new user
@@ -35,7 +40,7 @@ router.post("/signup", (req, res) => {
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
 
-  const userCheck = await User.find({ username: username });
+  const userCheck = await User.find({ username });
   if (userCheck.length === 0) {
     res.status(400).send({ success: false });
     return;
