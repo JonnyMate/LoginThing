@@ -64,6 +64,13 @@ a {
   background-color: #3f3d56;
 }
 
+.incorrect {
+  background-color: #ff3f1d;
+  width: 45%;
+  margin: 10px auto;
+  font-weight: bold;
+}
+
 /* @media only screen and (max-width: 600px) {
   body {
   }

@@ -1,41 +1,28 @@
 import React, { Component } from "react";
 
-class LoginComponent extends Component {
-  state = {
-    username: "",
-    password: "",
-    detailsIncorrect: false
+class LoginComponentRender extends Component {
+  constructor(props) {
+    super();
+    this.state = {
+      username: "",
+      password: "",
+      detailsIncorrect: false
+    };
+  }
+
+  onChangeUsername = () => {
+    this.props.ChangeStateUsername(this.state.username);
   };
 
-  // Handles login details
-  handleLogin = () => {
-    //Fetch from DB
-    fetch("/api/users/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        username: this.state.username,
-        password: this.state.password
-      })
-    })
-      .then(res => res.json())
-      .then(data => {
-        // If response is successful, redirect user
-        data.success
-          ? (window.location.href = "/signedin")
-          : this.setState({ detailsIncorrect: true });
-      })
-      .catch(err => console.log(err));
-  };
-
+  // Takes values of input fields and puts them in state
   handleChange = event => {
     const { name, value } = event.target;
 
     this.setState({
       [name]: value
     });
+
+    this.onChangeUsername();
   };
 
   render() {
@@ -78,4 +65,4 @@ class LoginComponent extends Component {
   }
 }
 
-export default LoginComponent;
+export default LoginComponentRender;
