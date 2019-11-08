@@ -1,17 +1,17 @@
 import React from "react";
 
-const LoginComponentRender = props => {
+const SignupComponentRender = props => {
   return (
     <div className="input-container">
       <div>
-        {/* Login / Register */}
-        <h1 className="title">Login</h1>
+        {/* Register */}
+        <h1 className="title">Register</h1>
       </div>
 
       {/* If details are incorrect */}
       {props.detailsIncorrect && (
         <div className="incorrect">
-          <p>Incorrect username or password</p>
+          <p>Username is taken</p>
         </div>
       )}
 
@@ -29,14 +29,20 @@ const LoginComponentRender = props => {
           placeholder="Password"
           onChange={props.handleChange}
         />
+        <input
+          type="password"
+          name="repassword"
+          placeholder="Re-type password"
+          onChange={props.handleChange}
+        />
       </div>
 
       {/* Submit */}
       <div className="submit-button">
-        <button onClick={props.handleLogin}>Login</button>
+        <button onClick={props.handleSignup}>Signup</button>
       </div>
     </div>
   );
 };
 
-export default LoginComponentRender;
+export default SignupComponentRender;
